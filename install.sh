@@ -10,3 +10,19 @@ ln -s $DIR/.vimrc $HOME/.vimrc
 
 echo "symlink: $DIR/.ctags -> $HOME/.ctags"
 ln -s $DIR/.ctags $HOME/.ctags
+
+function install_brew_packages {
+  brew install tree
+  brew install ctags
+  brew install autojump
+  brew install vim --with-client-server --override-system-vi
+}
+
+echo "Do you wish to install brew plugins?"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) install_brew_packages; break;;
+        No ) exit;;
+    esac
+done
+
