@@ -88,7 +88,11 @@ source $ZSH/oh-my-zsh.sh
 alias less='less -R'
 alias t="tree -C -f"
 alias p="ps awux"
+alias pg='ps awxu | grep '
 alias n="vim ~/NOTES"
+alias ds='dirs -v'
+alias box='ssh gerard@192.168.23.253'
+alias f='find . | grep '
 
 source "`brew --prefix grc`/etc/grc.bashrc"
 
@@ -126,6 +130,4 @@ unsetopt nomatch
 # directory stacking
 DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
-alias ds='dirs -v'
-alias box='ssh gerard@192.168.23.253'
-alias f='find . | grep '
+
