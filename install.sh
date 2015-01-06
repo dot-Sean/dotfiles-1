@@ -17,6 +17,11 @@ ln -f -s $DIR/.vimrc $HOME/.vimrc
 echo "symlink: $DIR/.ctags -> $HOME/.ctags"
 ln -f -s $DIR/.ctags $HOME/.ctags
 
+echo "symlink: $DIR/COMMANDS -> $HOME/COMMANDS"
+ln -f -s $DIR/COMMANDS $HOME/COMMANDS
+
+
+
 function install_brew_packages {
   brew install tree
   brew install ctags
