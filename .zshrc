@@ -128,3 +128,4 @@ DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
 alias ds='dirs -v'
 alias box='ssh gerard@192.168.23.253'
+alias f='find . | grep '
