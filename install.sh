@@ -5,7 +5,10 @@ DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 echo "symlink: $DIR/.zshrc -> $HOME/.zshrc"
 ln -f -s $DIR/.zshrc $HOME/.zshrc
 
-echo "symlink: $DIR/oh-my-zsh -> $HOME/.oh-my-zsh
+echo "symlink: $DIR/vim -> $HOME/.vim"
+ln -f -s $DIR/vim $HOME/.vim
+
+echo "symlink: $DIR/oh-my-zsh -> $HOME/.oh-my-zsh"
 ln -f -s $DIR/oh-my-zsh $HOME/.oh-my-zsh
 
 echo "symlink: $DIR/.vimrc -> $HOME/.vimrc"
