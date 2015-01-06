@@ -1,4 +1,5 @@
 execute pathogen#infect()
+Helptags
 syntax on
 filetype plugin indent on
 set smartindent
@@ -46,3 +47,24 @@ nmap <C-s><left>   :leftabove  vnew<CR>
 nmap <C-s><right>  :rightbelow vnew<CR>
 nmap <C-s><up>     :leftabove  new<CR>
 nmap <C-s><down>   :rightbelow new<CR>
+
+" autocmd FileType scala set tags=~/.tags
+
+set backspace=2
+let delimitMate_expand_cr = 1
+
+"let g:JavaImpPaths = "/Users/g/projects/spark/core/src/main/java," .
+"      \ "/Users/g/projects/spark/core/src/main/java,".
+"      \ "/Users/g/projects/spark/core/src/main/java,".
+"      \ "/Users/g/projects/spark/examples/scala-2.10/src/main/java,".
+"      \ "/Users/g/projects/spark/examples/src/main/java,".
+"      \ "/Users/g/projects/spark/examples/src/main/java,".
+"      \ "/Users/g/projects/spark/extras/kinesis-asl/src/main/java,".
+"      \ "/Users/g/projects/spark/network/common/src/main/java,".
+"      \ "/Users/g/projects/spark/network/shuffle/src/main/java,".
+"      \ "/Users/g/projects/spark/network/yarn/src/main/java,".
+"      \ "/Users/g/projects/spark/sql/core/src/main/java"
+""
+"let g:JavaImpDataDir = $HOME . "/tmp/JavaImp"
+
+nnoremap <C-i> :JI<CR>

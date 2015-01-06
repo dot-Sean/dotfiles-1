@@ -51,7 +51,7 @@ ZSH_THEME="philips"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git scala sbt fasd)
+plugins=(git scala sbt fasd autojump)
 
 # User configuration
 
@@ -88,6 +88,7 @@ source $ZSH/oh-my-zsh.sh
 alias less='less -R'
 alias t="tree -C -f"
 alias p="ps awux"
+alias n="vim ~/NOTES"
 
 source "`brew --prefix grc`/etc/grc.bashrc"
 
@@ -100,3 +101,30 @@ function c {
       cat ~/COMMANDS | grep $1
   fi
 }
+
+export HTTP_PROXY=http://10.10.200.80:8080
+export HTTPS_PROXY=https://10.10.200.80:8080
+
+# proxy on / off
+function proxy {
+  if [ -z "$http_proxy" ]
+    then 
+      export http_proxy=$HTTP_PROXY
+      export https_proxy=$HTTPS_PROXY
+      echo "proxy set to $HTTP_PROXY"
+      echo "proxy set to $HTTPS_PROXY"
+    else
+      unset http_proxy
+      unset https_proxy
+      echo "proxy unset"
+  fi
+}
+
+# prevents shell from erroring out when can't resolve glob, eg. sbt ~test
+unsetopt nomatch
+
+# directory stacking
+DIRSTACKSIZE=8
+setopt autopushd pushdminus pushdsilent pushdtohome
+alias ds='dirs -v'
+alias box='ssh gerard@192.168.23.253'
