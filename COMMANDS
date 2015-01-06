@@ -1,0 +1,160 @@
+zsh ^r (search command buffer)
+zsh kill <keyword><tab><tab> (search then kill process list)
+zsh ls -<tab> (show command options)
+zsh ssh <tab> (brings up previously acessed hostnames)
+zsh cd a/b/c/d (zsh automatically works this out)
+zsh d (list directory history, hit 1, 2, 3, 4 etc to change dir)
+zsh pbcopy < ~/.ssh/id_rsa.pub
+
+brew options <package> (shows package compile options)
+
+gpg --gen-key
+
+autojump j foo (jump to dir contains foo)
+autojump jc bar (jump to child dir)
+autojump jo music (open finder)
+autojump j -s (show stats and weights)
+
+script (record session, ctrl-D to end recording)
+
+ssh-keygen -b 4096 -f .ssh/id_rsa4096_2014
+
+cd - (go back a directory)
+ds (show directory stack
+cd -# (eg. cd -3 to navigate to item 3 on directory stack)
+
+tree -f 
+tree -C | less -R (colored tree)
+tree -C -P '*SQL*' --prune 
+
+ctags -R .
+ctags -R -f ./.git/tags .
+
+VIM vim
+vim http://users.ece.utexas.edu/~adnan/vimqrc.html
+
+ctags -R --language-force=scala -f.tags `/System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/java_home`
+
+vim general :set filetype? (show filetype)
+vim general C (delete from cursor to end of line, insert mode)
+vim general :set number 
+vim general :set number!
+vim general :set nu  (enable line numbers)
+vim general :set nu! (disable line numbers)
+vim general :Helptags (load help tags)
+
+vim navigation gg (top of page)
+vim navigation G (bottom of page)
+
+vim ctags ,] (jump to method definition)
+vim ctags ,[ (climb back up definition tree)
+vim ctags f8 (activate code explorer)
+
+https://github.com/kalmanb/vim-scala-auto-import/blob/master/plugin/JavaImp.vim
+vim  ^i (create import statement)
+
+ctags -R --language-force=scala -f.tags /opt/sun-jdk-1.5.0.08/share/
+
+vim commandt ,t (open command t)
+vim commandt ,b (to show whats in buffer)
+vim commandt ^u (clear search selection)
+vim commandt ^c (cancel file listing)
+vim commandt _  (previous buffer)
+vim commandt +  (next buffer)
+
+vim splits  :vsp (split vertically)
+vim splits  :sp  (split horizontally)
+vim splits  ,,   (change between splits)
+vim splits  ^wn  (new empty window)
+vim splits  ^ws  (split)
+vim splits  ^w left/right/up/down arrow (split)
+vim splits  ^w+ (resize split window)
+
+vim buffers  :bd (close buffer or current file without quiting vim)
+vim buffers  :buffers
+vim buffers    1 #h   "foo"                          line 1
+vim buffers    2 %a   "bar"                          line 1
+vim buffers  :bd 2
+vim buffers  :buffers
+vim buffers    1 %a   "foo"                          line 1
+vim buffers  :b 2
+vim buffers    2   bar
+
+nerdtree  ^n (toggle)
+nerdtree  ?  (help)
+nerdtree  o  (open single node)
+nerdtree  O  (open node recursively)
+
+sbc   - sbt compile
+sbco  - sbt console
+sbcq  - sbt console-quick
+sbcl  - sbt clean
+sbcp  - sbt console-project
+sbd   - sbt doc
+sbdc  - sbt dist:clean
+sbdi  - sbt dist
+sbgi  - sbt gen-idea
+sbp   - sbt publish
+sbpl  - sbt publish-local
+sbr   - sbt run
+sbrm  - sbt run-main
+sbu   - sbt update
+sbx   - sbt test
+
+g       - git
+gst     - git status
+gd      - git diff
+gdc     - git diff --cached
+gdv     - git diff -w "$@" | view -
+gl      - git pull
+gup     - git pull --rebase
+gp      - git push
+gc      - git commit -v
+gc!     - git commit -v --amend
+gca     - git commit -v -a
+gca!    - git commit -v -a --amend
+gcmsg   - git commit -m
+gco     - git checkout
+gcm     - git checkout master
+gr      - git remote
+grv     - git remote -v
+grmv    - git remote rename
+grrm    - git remote remove
+grset   - git remote set-url
+grup    - git remote update
+grbi    - git rebase -i
+grbc    - git rebase --continue
+grba    - git rebase --abort
+gb      - git branch
+gba     - git branch -a
+gcl     - git config --list
+gcp     - git cherry-pick
+glg     - git log --stat --max-count=10
+glgg    - git log --graph --max-count=10
+glgga   - git log --graph --decorate --all
+glo     - git log --oneline --decorate --color
+glog    - git log --oneline --decorate --color --graph
+gss     - git status -s
+ga      - git add
+gm      - git merge
+grh     - git reset HEAD
+grhh    - git reset HEAD --hard
+gwc     - git whatchanged -p --abbrev-commit --pretty=medium
+gpoat   - git push origin --all && git push origin --tags
+gmt     - git mergetool --no-prompt
+gg      - git gui citool
+gga     - git gui citool --amend
+gk      - gitk --all --branches
+gsts    - git stash show --text
+gsta    - git stash
+gstp    - git stash pop
+gstd    - git stash drop
+grt     - cd $(git rev-parse --show-toplevel || echo ".")
+gsr     - git svn rebase
+gsd     - git svn dcommit
+gcount  - git shortlog -sn
+gclean  - git reset --hard && git clean -dfx
+git-svn-dcommit-push git svn dcommit && git push github master:svntrunk
+
+iterm CMD, (split vertical tab) 
+iterm CMD. (split horizontal tab)
