@@ -3,16 +3,16 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 echo "symlink: $DIR/.zshrc -> $HOME/.zshrc"
-ln -s $DIR/.zshrc $HOME/.zshrc
+ln -f -s $DIR/.zshrc $HOME/.zshrc
 
 echo "symlink: $DIR/oh-my-zsh -> $HOME/.oh-my-zsh
-ln -s $DIR/oh-my-zsh $HOME/.oh-my-zsh
+ln -f -s $DIR/oh-my-zsh $HOME/.oh-my-zsh
 
 echo "symlink: $DIR/.vimrc -> $HOME/.vimrc"
-ln -s $DIR/.vimrc $HOME/.vimrc
+ln -f -s $DIR/.vimrc $HOME/.vimrc
 
 echo "symlink: $DIR/.ctags -> $HOME/.ctags"
-ln -s $DIR/.ctags $HOME/.ctags
+ln -f -s $DIR/.ctags $HOME/.ctags
 
 function install_brew_packages {
   brew install tree
