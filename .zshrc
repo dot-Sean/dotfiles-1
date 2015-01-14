@@ -91,12 +91,14 @@ alias p="ps awux"
 alias pg='ps awxu | grep '
 alias n="vim ~/NOTES"
 alias ds='dirs -v'
-alias box='ssh gerard@192.168.23.34'
 alias f='find . | grep '
-alias irc='ssh gerard@192.168.23.38'
 alias v="vim"
 
 source "`brew --prefix grc`/etc/grc.bashrc"
+
+function node {
+  ssh gerard@node-00${1}
+}
 
 # search commands
 function c {

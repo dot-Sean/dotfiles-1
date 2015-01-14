@@ -23,11 +23,22 @@ ln -f -s $DIR/COMMANDS $HOME/COMMANDS
 echo "symlink: $DIR/.epicrc -> $HOME/epicrc"
 ln -f -s $DIR/epicrc $HOME/.epicrc
 
+echo "symlink: $DIR/.clush.conf -> $HOME/.clush.conf"
+ln -f -s $DIR/.clush.conf $HOME/.clush.conf
+
 function install_brew_packages {
   brew install tree
   brew install ctags
   brew install autojump
   brew install vim --with-client-server --override-system-vi
+}
+
+function install_packages {
+  clush_install
+}
+
+function clush_install {
+  echo "TODO: put clush install here"
 }
 
 echo "Do you wish to install brew plugins?"
@@ -37,4 +48,13 @@ select yn in "Yes" "No"; do
         No ) exit;;
     esac
 done
+
+echo "Do you wish to install additional packages?"
+select yn in "Yes" "No"; do
+    case $yn in
+        Yes ) install_packages; break;;
+        No ) exit;;
+    esac
+done
+
 
