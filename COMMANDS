@@ -1,3 +1,5 @@
+asciinema rec (ctrl D to exit)
+
 zsh ^r (search command buffer)
 zsh kill <keyword><tab><tab> (search then kill process list)
 zsh ls -<tab> (show command options)
@@ -156,5 +158,23 @@ gcount  - git shortlog -sn
 gclean  - git reset --hard && git clean -dfx
 git-svn-dcommit-push git svn dcommit && git push github master:svntrunk
 
+# fetch updates from cloned repo
+git remote add upstream <repo>
+git fetch upstream
+# then: (like "git pull" which is fetch + merge)
+git merge upstream/master master
+
 iterm CMD, (split vertical tab) 
 iterm CMD. (split horizontal tab)
+
+dig @192.168.23.253 -t SRV skydns.local
+
+cat file.json | pp_json
+
+grep -l <path> (include only filename in output)
+
+sed -i .bak "s/csbuild/build/g" <file> (replace string in file in place with extension)
+
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys <key>
+
+cat /proc/cmdline (kernel parameters)

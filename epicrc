@@ -1,0 +1,4 @@
+# Sample .epicrc to load LiCe on startup
+IF (word(2 $loadinfo()) != [pf]) {  LOAD -pf $word(1 $loadinfo());  RETURN;};
+# Load LiCe for EPIC5!
+LOAD -pf ~/projects/dotfiles/lice5/lice.irc;

@@ -51,11 +51,11 @@ ZSH_THEME="philips"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git scala sbt fasd autojump)
+plugins=(git scala sbt fasd autojump jsontools)
 
 # User configuration
 
-export PATH="/Users/g/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/Users/g/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/g/projects/apache-maven-3.2.5/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -91,8 +91,10 @@ alias p="ps awux"
 alias pg='ps awxu | grep '
 alias n="vim ~/NOTES"
 alias ds='dirs -v'
-alias box='ssh gerard@192.168.23.253'
+alias box='ssh gerard@192.168.23.34'
 alias f='find . | grep '
+alias irc='ssh gerard@192.168.23.38'
+alias v="vim"
 
 source "`brew --prefix grc`/etc/grc.bashrc"
 
@@ -120,6 +122,8 @@ function proxy {
     else
       unset http_proxy
       unset https_proxy
+      unset HTTP_PROXY
+      unset HTTPS_PROXY
       echo "proxy unset"
   fi
 }
@@ -131,3 +135,4 @@ unsetopt nomatch
 DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
 
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`

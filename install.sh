@@ -20,7 +20,8 @@ ln -f -s $DIR/.ctags $HOME/.ctags
 echo "symlink: $DIR/COMMANDS -> $HOME/COMMANDS"
 ln -f -s $DIR/COMMANDS $HOME/COMMANDS
 
-
+echo "symlink: $DIR/.epicrc -> $HOME/epicrc"
+ln -f -s $DIR/epicrc $HOME/.epicrc
 
 function install_brew_packages {
   brew install tree
