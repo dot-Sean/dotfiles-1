@@ -55,7 +55,7 @@ plugins=(git scala sbt fasd autojump jsontools)
 
 # User configuration
 
-export PATH="/Users/g/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/g/projects/apache-maven-3.2.5/bin"
+export PATH=/Users/g/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/g/projects/apache-maven-3.2.5/bin:/opt/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -110,13 +110,14 @@ function c {
   fi
 }
 
-export HTTP_PROXY=http://10.10.200.80:8080
-export HTTPS_PROXY=https://10.10.200.80:8080
+
 
 # proxy on / off
 function proxy {
   if [ -z "$http_proxy" ]
     then 
+      export HTTP_PROXY=http://10.10.200.80:8080
+      export HTTPS_PROXY=https://10.10.200.80:8080
       export http_proxy=$HTTP_PROXY
       export https_proxy=$HTTPS_PROXY
       echo "proxy set to $HTTP_PROXY"
@@ -138,3 +139,4 @@ DIRSTACKSIZE=8
 setopt autopushd pushdminus pushdsilent pushdtohome
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export SSH_USER=gerard
