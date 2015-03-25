@@ -21,6 +21,10 @@ script (record session, ctrl-D to end recording)
 
 ssh-keygen -b 4096 -f .ssh/id_rsa4096_2014
 
+ssh-keygen -t dsa -f .ssh/id_dsa
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_dsa_stash
+
 cd - (go back a directory)
 ds (show directory stack
 cd -# (eg. cd -3 to navigate to item 3 on directory stack)
@@ -44,6 +48,8 @@ vim general :set number!
 vim general :set nu  (enable line numbers)
 vim general :set nu! (disable line numbers)
 vim general :Helptags (load help tags)
+vim general /<string> (hit n for next match)
+vim general :set hlsearch (highlight search results)
 
 vim navigation gg (top of page)
 vim navigation G (bottom of page)
@@ -81,6 +87,8 @@ vim buffers  :buffers
 vim buffers    1 %a   "foo"                          line 1
 vim buffers  :b 2
 vim buffers    2   bar
+
+vim :%s/<match>/<replace>/c (ask permission before replacing string)
 
 nerdtree  ^n (toggle)
 nerdtree  ?  (help)
@@ -161,8 +169,10 @@ git-svn-dcommit-push git svn dcommit && git push github master:svntrunk
 # fetch updates from cloned repo
 git remote add upstream <repo>
 git fetch upstream
+git fetch upstream --tags
 # then: (like "git pull" which is fetch + merge)
 git merge upstream/master master
+git push --tags origin
 
 iterm CMD, (split vertical tab) 
 iterm CMD. (split horizontal tab)
@@ -183,19 +193,61 @@ clush -bw node-00[1-3] sudo ls
 
 clush -w node[3-5,62] uname -r (Run command `uname -r` on nodes: node3, node4, node5 and node62)
 clush -w node[3-5,62] -b uname -r (Run command `uname -r` on nodes[3-5,62] and display gathered output results (``dshbak``-like)
-
 ssh node32 find /etc/yum.repos.d -type f | clush -w node[40-42] -b xargs ls -l (Search some files on node32 in /etc/yum.repos.d and use clush to list the matching ones on node[40-42], and use ``-b`` to display gathered results.)
-
 clush -a uname -r (Run command `uname -r` on all cluster nodes, see ``clush.conf``\(5) to setup all cluster nodes (`nodes_all:` field).)
-
 clush -a -x node[5,7] uname -r (Run command `uname -r` on all cluster nodes except on nodes node5 and node7.)
-
 clush -g oss modprobe lustre (Run command `modprobe lustre` on nodes from node group named `oss`, see ``clush.conf``\(5) to setup node groups (`nodes_group:` field).)
-
 clush -w node[3-5,62] --copy /etc/motd (Copy local file `/etc/motd` to remote nodes node[3-5,62].)
-
 clush -w node[3-5,62] --copy /etc/motd --dest /tmp/motd2 (Copy local file `/etc/motd` to remote nodes node[3-5,62] at path `/tmp/motd2`.)
-
 clush -w node[3-5,62] -c /usr/share/doc/clustershell (Recursively copy local directory `/usr/share/doc/clustershell` to the same path on remote nodes node[3-5,62].)
 
 ansible -i <inventory> -l <node pattern> <playbook> (limit playbook to nodes)
+ansible -i production all -a "uptime" -f 10 (10 uptime commands in parallel)
+ansible -i chifley etcd_master -m shell -a "ls -la | grep foo" (run shell command with pipe)
+
+maprcli node services -tasktracker restart -nodes node1 node2 node3
+maprcli node services -name nodemanager -action start -nodes node-001
+maprcli alarm list (check mapr alarms)
+maprcli service list -node qtausc-bda03 (list services on node)
+maprcli disk list -host `hostname` (list disks)
+
+service mapr-zookeeper qstatus (check for quorom)
+
+iptables -t nat -L -n -v
+
+# flush rules
+iptables -F
+iptables -X
+iptables -t nat -F
+iptables -t nat -X
+iptables -t mangle -F
+iptables -t mangle -X
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+
+iptstate (check iptables tables)
+
+cat /prod/<pid>/cmdline (find the command used for process id)
+
+initctl list (upstart list)
+
+chmod g+s /some/directory (make directory group sticky, any files / directories created get group permission)
+
+lsof -i :<port> (list processes listning on ports)
+
+/etc/init.d/apparmor teardown # AppArmor 2.5.1+
+/etc/init.d/apparmor stop # AppArmor 2.5 and lower
+
+pkill <pattern> (kill processes matching pattern)
+pkill -f <pattern> (use entire process string)
+
+echo 'johnb:mapr' | sudo chpasswd
+
+iozone -I -r 1M -s 4G -i 0 -i 1 -i 2 -f /dev/sdb +-n
+/opt/MegaRAID/storcli/storcli64 /c0 /v1 set pdcache=off
+
+dd if=/dev/zero of=10Gtest bs=1M count=10000
+dd if=/dev/zero of=10Gtest bs=1M count=10000 oflag=direct (disable OS cache)
+
+dstat --disk-util (shows per disk, disk utilization)

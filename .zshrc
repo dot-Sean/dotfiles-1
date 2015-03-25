@@ -55,7 +55,7 @@ plugins=(git scala sbt fasd autojump jsontools)
 
 # User configuration
 
-export PATH=/Users/g/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/g/projects/apache-maven-3.2.5/bin:/opt/bin
+export PATH=/Users/g/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/g/projects/apache-maven-3.2.5/bin:/opt/bin:/Users/g/bin:/usr/local/opt/go/libexec/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -93,6 +93,9 @@ alias n="vim ~/NOTES"
 alias ds='dirs -v'
 alias f='find . | grep '
 alias v="vim"
+alias lt="ls -lat"
+
+alias ops="ssh gerard@ops"
 
 source "`brew --prefix grc`/etc/grc.bashrc"
 
@@ -140,3 +143,8 @@ setopt autopushd pushdminus pushdsilent pushdtohome
 
 export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export SSH_USER=gerard
+
+alias work='ssh gerard@192.168.23.229'
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
+

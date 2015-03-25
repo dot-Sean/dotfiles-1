@@ -68,3 +68,7 @@ let delimitMate_expand_cr = 1
 "let g:JavaImpDataDir = $HOME . "/tmp/JavaImp"
 
 nnoremap <C-i> :JI<CR>
+
+set hlsearch
+"set list listchars="tab:\uBB\uBB,trail:\u87,nbsp:~"
+nnoremap  ;  :
