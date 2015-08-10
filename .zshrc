@@ -100,7 +100,19 @@ alias ops="ssh gerard@ops"
 source "`brew --prefix grc`/etc/grc.bashrc"
 
 function node {
-  ssh gerard@node-00${1}
+  ssh -A gerard@qtausc-pphd01${1}.quantium.com.au.local
+}
+
+function bnode {
+  ssh -A gerard@qtausc-pphd01${1}.quantium.com.au.local -F /Users/g/projects/deployment/ansible/cloud-services/ssh.config
+}
+
+function dev {
+  ssh -A gerard@qtausc-vpcsdev0${1}.quantium.com.au.local
+}
+
+function gnode {
+  ssh -A gerard@192.168.128.${1}
 }
 
 # search commands
@@ -119,8 +131,8 @@ function c {
 function proxy {
   if [ -z "$http_proxy" ]
     then 
-      export HTTP_PROXY=http://10.10.200.80:8080
-      export HTTPS_PROXY=https://10.10.200.80:8080
+      export HTTP_PROXY=http://192.168.16.1:8080
+      export HTTPS_PROXY=https://192.168.16.1:8080
       export http_proxy=$HTTP_PROXY
       export https_proxy=$HTTPS_PROXY
       echo "proxy set to $HTTP_PROXY"
@@ -145,6 +157,8 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 export SSH_USER=gerard
 
 alias work='ssh gerard@192.168.23.229'
+alias edge='ssh gerardp@edge-node.skynet.quantium.com.au'
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
-
+alias qcli="DNS_IPS='192.168.16.190' HOSTNAME_SUFFIX='hal.quantium.com.au' MARATHON_URL=http://qtausc-vpcsdev01:8081 ETCD_URLS=https://qtausc-vpcsdev01:4001 go run $GOPATH/src/qcli/cmd/qcli/*.go -x ~/certs"
+alias qclip="DNS_IPS='192.168.81.101,192.168.81.102,192.168.81.103,192.168.81.104,192.168.81.105' HOSTNAME_SUFFIX='skynet.quantium.com.au' MARATHON_URL=http://qtausc-pphd0101.quantium.com.au.local:8081 ETCD_URLS='https://qtausc-pphd0101.quantium.com.au.local:4001,https://qtausc-pphd0102.quantium.com.au.local:4001,https://qtausc-pphd0103.quantium.com.au.local:4001' go run $GOPATH/src/qcli/cmd/qcli/*.go -x ~/certs"

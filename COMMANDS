@@ -210,6 +210,11 @@ maprcli node services -name nodemanager -action start -nodes node-001
 maprcli alarm list (check mapr alarms)
 maprcli service list -node qtausc-bda03 (list services on node)
 maprcli disk list -host `hostname` (list disks)
+maprcli alarm clear -alarm NODE_ALARM_HB_PROCESSING_SLOW (http://doc.mapr.com/display/MapR/alarm+clear)
+maprcli disk add -host `hostname -f` -disks /dev/sds,/dev/sdt,/dev/sdu,/dev/sdv,/dev/sdw
+maprcli disk remove -host `hostname -f` -disks /dev/sdd
+maprcli node move -serverids 8234685301611274033 -topology /data/pod1/rack1
+maprcli node list -columns id
 
 service mapr-zookeeper qstatus (check for quorom)
 
@@ -251,3 +256,26 @@ dd if=/dev/zero of=10Gtest bs=1M count=10000
 dd if=/dev/zero of=10Gtest bs=1M count=10000 oflag=direct (disable OS cache)
 
 dstat --disk-util (shows per disk, disk utilization)
+
+git config --global http.proxy http://10.10.200.80:8080
+git config --global https.proxy https://10.10.200.80:8080
+git commit --amend
+git push origin +sssd
+
+yarn application -list 
+yarn application -kill <application id>
+yarn rmadmin -refreshQueues  (refresh yarn queues)
+
+ssh-multi.sh `for x in {1..9}; do echo 192.168.81.10$x; done`
+
+dumpe2fs /dev/sdt1 |grep 'Filesystem features'
+
+etcdctl --ca-file /etc/etcd/ca.crt --key-file client.key --cert-file client.crt -C https://qtausc-vpcsdev02:4001 ls
+/opt/bin/etcdctl --cert-file /etc/etcd/client.crt --ca-file /etc/etcd/ca.crt --key-file /etc/etcd/client.key -C https://qtausc-pphd0103:4001 ls 
+
+sudo tcpdump -i docker0 host 192.168.81.122 -w edge.pcap
+
+go get github.com/constabulary/gb/...
+
+gb build all
+gb vendor fetch github.com/codegangsta/cli
